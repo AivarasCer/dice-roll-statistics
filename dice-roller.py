@@ -1,5 +1,5 @@
 import random
-import time
+from tqdm import tqdm
 
 
 def get_number_of_dice():
@@ -17,13 +17,8 @@ def get_number_of_dice():
 def simulate_rolls(number_of_dice, simulations=1000000):
     results = {i: 0 for i in range(number_of_dice, (number_of_dice * 6) + 1)}
     print(f'Simulating {simulations:,} rolls of {number_of_dice} dice...')
-    last_print_time = time.time()
 
-    for i in range(simulations):
-        if time.time() > last_print_time + 1:
-            print(f'{round(i / simulations * 100, 1)}% done...')
-            last_print_time = time.time()
-
+    for _ in tqdm(range(simulations), desc="Rolling Dice"):
         total = sum(random.randint(1, 6) for _ in range(number_of_dice))
         results[total] += 1
 
