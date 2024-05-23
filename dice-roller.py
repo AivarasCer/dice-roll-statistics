@@ -30,7 +30,7 @@ def simulate_rolls(number_of_dice, simulations=1000000):
     return results
 
 
-def display_results(results, number_of_dice, simulations):
+def display_results(results, simulations):
     print('TOTAL - ROLLS - PERCENTAGE')
     for total, rolls in sorted(results.items()):
         percentage = round(rolls / simulations * 100, 1)
@@ -41,7 +41,7 @@ def main():
     number_of_dice = get_number_of_dice()
     num_simulations = 1000000
     results = simulate_rolls(number_of_dice, num_simulations)
-    display_results(results, number_of_dice, num_simulations)
+    display_results(results, num_simulations)
 
 
 if __name__ == "__main__":
